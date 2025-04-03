@@ -83,7 +83,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="row">
+      <h1>Gesture Detection App</h1>
+      <p>Used Reactjs, Tensorflowjs and React-Webcam</p>
+      <div className="App-header">
         <div className="col-8">
           <Webcam
             ref={webcamRef}
