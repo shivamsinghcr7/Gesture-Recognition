@@ -8,13 +8,27 @@ import { DrawingMesh } from "./DrawingMesh.jsx";
 import * as fingerpose from "fingerpose";
 import thumbs_up from "./emojis/thumbs_up.png";
 import victory from "./emojis/victory.png";
+import korean_heart from "./emojis/koreanHeart.png";
+import openPalm from "./emojis/openPalm.png";
+import L_symbol from "./emojis/L_symbol.jpg";
+import {
+  KoreanLoveGesture,
+  OpenPalmGesture,
+  VerticalLsymbol,
+} from "./GesturesList.jsx";
 
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
   const [emoji, setEmoji] = useState(null);
-  const images = { thumbs_up: thumbs_up, victory: victory };
+  const images = {
+    thumbs_up: thumbs_up,
+    victory: victory,
+    korean_heart: korean_heart,
+    open_palm: openPalm,
+    l_symbol: L_symbol,
+  };
 
   const runHandpose = async () => {
     const pose = await HandPose.load();
@@ -54,6 +68,9 @@ function App() {
         const GestureEst = new fingerpose.GestureEstimator([
           fingerpose.Gestures.VictoryGesture,
           fingerpose.Gestures.ThumbsUpGesture,
+          KoreanLoveGesture,
+          OpenPalmGesture,
+          VerticalLsymbol,
         ]);
 
         const gesture = await GestureEst.estimate(hand[0].landmarks, 8);
